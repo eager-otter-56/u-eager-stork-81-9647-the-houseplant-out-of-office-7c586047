@@ -1,0 +1,20 @@
+import os
+
+TEXT = (
+    "Out of office since my last watering in March. "
+    "Send urgent requests to the sun "
+    "\u2014 the only colleague who shows up daily."
+)
+
+
+def main():
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "entry.txt")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(TEXT)
+    os.chmod(path, 0o644)
+
+
+if __name__ == "__main__":
+    main()
